@@ -56,7 +56,7 @@
                                                 <div class="mb-3">
                                                     <label>Title</label>
                                                     <div>
-                                                    <input type="text"  id="InputTitle" name="InputTitle" class="@error('InputTitle') is-invalid @enderror form-control"  value="{{ old('InputSubtitle') }}" />
+                                                    <input type="text"  id="InputTitle" name="InputTitle" class="@error('InputTitle') is-invalid @enderror form-control"  value="{{ old('InputTitle') }}" />
                                                     @error('InputTitle')
                                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                                     @enderror
@@ -145,9 +145,6 @@
                 InputImage: {
                     required: "Please enter image",
                 }
-                 description: {
-                    required: "Please enter description",
-                },
             },
         })
     });

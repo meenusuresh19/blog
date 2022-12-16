@@ -97,33 +97,13 @@
                             <div class="card-body">
                                 <input type="hidden" id="InputId"name="InputId" value=""/>
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label>Created At:</label>
-                                                <div>
-                                            <label id="ViewTime"></label>    
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                                <hr>
-                                <div class="row">
                                     <img id="ViewImage"src="" height='100' width="100" >
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label>Title:</label>
                                             <div>
-                                        <label id="ViewTitle"></label>    
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label>Sub Title:</label>
-                                            <div>
-                                        <label id="ViewSubtitle"></label>    
+                                        <label id="ViewTitle" style="text-align: center;"></label>    
                                             </div>
                                         </div>
                                     </div>
@@ -131,19 +111,8 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <label>Description:</label>
                                             <div>
                                             <label id="ViewDescription"></label>    
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label>Preference:</label>
-                                            <div>
-                                            <label id="ViewPreference"></label>    
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +131,7 @@
 @section('script')
 <script>
         function view(val){
-            $('#ViewTime').html(val.formatted_created_at);
+            $('#ViewTime').html(val.created_at);
             $('#ViewTitle').html(val.title);
             $('#ViewSubtitle').html(val.sub_title);
             $('#ViewDescription').html(val.description);

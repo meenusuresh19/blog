@@ -57,7 +57,10 @@
                                                 <div class="mb-3">
                                                     <label>Title</label>
                                                     <div>
-                                                    <input type="text"  id="InputTitle"name="InputTitle" class="form-control" value="{{ $data->title }}"required /> 
+                                                        <input type="text"  id="InputTitle"name="InputTitle"  class="@error('InputTitle') is-invalid @enderror form-control" value="{{ $data->title }}"required />
+                                                        @error('InputTitle')
+                                                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                        @enderror 
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,7 +68,10 @@
                                                 <div class="mb-3">
                                                     <label>Sub Title</label>
                                                     <div>
-                                                    <input type="text"id="InputSubtitle" name="InputSubtitle"class="form-control"value="{{ $data->sub_title }}"/>
+                                                        <input type="text"id="InputSubtitle" name="InputSubtitle" class="@error('InputSubtitle') is-invalid @enderror form-control" value="{{ $data->sub_title }}"/>
+                                                        @error('InputSubtitle')
+                                                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>  
@@ -75,7 +81,7 @@
                                                 <div class="mb-3">
                                                     <label>Image</label>
                                                     <div>
-                                                        <input class="form-control" type="file" name="InputImage" id="InputImage" required />
+                                                        <input class="form-control" type="file" name="InputImage" id="InputImage" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -117,3 +123,38 @@
                 </div><!-- page -->
             </div><!-- main-->
 @endsection
+@section('script')
+<script>
+  $( document ).ready(function() {
+        $("#blog-add").validate({
+ 
+            rules: {
+                InputTitle: {
+                    required: true,
+                    minlength: 3
+                },
+ 
+                InputSubtitle: {
+                    required: true,
+                },
+                InputImage: {
+                    required:true,
+                }
+            },
+            messages: {
+ 
+                InputTitle: {
+                    required: "Please enter title",
+                    minlength:"Please enter atleast 3 character"
+                },
+                InputSubtitle: {
+                    required: "Please enter sub title",
+                },
+                InputImage: {
+                    required: "Please enter image",
+                }
+            },
+        })
+    });
+ </script>
+ @endsection

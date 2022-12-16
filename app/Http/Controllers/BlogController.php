@@ -117,13 +117,12 @@ class BlogController extends Controller
         $validated = $request->validate([
             'InputTitle' => 'required|regex:/^[a-zA-Z0-9 ]+$/i|string|min:3|max:250',
             'InputSubtitle' => 'required',
-            'InputImage' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'InputImage' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'InputDescription' => 'required',
         ], [
             'InputTitle.required' => 'Title required',
             'InputTitle.regex' => 'Only alphabets numbers and Spaces allowed',
             'InputSubtitle.required' => 'Subtitle is required',
-            'InputImage.required' => 'Image required',
             'InputImage.mimes' => 'Only jpg,png,jpeg,gif,svg are allowed',
             'InputImage.max' => 'Image is too large',
             'InputDescription.required' => 'Description is required',
@@ -140,10 +139,11 @@ class BlogController extends Controller
                     $image->move(public_path('uploaded/image/'), $new_name);
                     $uploads_dir = 'public/uploaded/image/';
                     $image_path = $new_name;
+                    $blogs->image = $image_path;
                 }
                 $blogs->title = $request->InputTitle;
                 $blogs->sub_title = $request->InputSubtitle ;
-                $blogs->image = $image_path;
+               
                 $blogs->description = $request->InputDescription;
                 $blogs->save();
                 
